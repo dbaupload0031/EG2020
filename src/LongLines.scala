@@ -7,6 +7,7 @@ object LongLines {
 
   def processFile(filename: String, width: Int) {
     //local function can access the parameter of their enclosing function
+    //
     def processLine(line: String) {
       if (line.length > width)
         println(filename + ": " + line.trim)
