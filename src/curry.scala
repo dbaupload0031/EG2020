@@ -7,7 +7,7 @@ object curry {
   val f1= factorOf(5)_
   val f2=factorOf(10) _
 
-
+//new01
   def main(args: Array[String]) = {
     println( f1(10))
     println( f2(10))
