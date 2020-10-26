@@ -1,12 +1,16 @@
-pipeline:
-   backend:
-     image: golang
-     commands:
-       - go build
-       - go test
-   frontend:
-     image: node
-     commands:
-       - npm install
-       - npm run test
-       - npm run build
+kind: pipeline
+name: default
+
+steps:
+- name: test
+  image: docker:dind
+  volumes:
+  - name: dockersock
+    path: /var/run/docker.sock
+  commands:
+  - docker ps -a
+
+volumes:
+- name: dockersock
+  host:
+    path: /var/run/docker.sock
