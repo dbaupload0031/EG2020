@@ -2,15 +2,13 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
-  image: docker:dind
-  volumes:
-  - name: dockersock
-    path: /var/run/docker.sock
+- name: ping
+  image: mongo:4
   commands:
-  - docker ps -a
+  - sleep 5
+  - mongo --host mongo --eval "db.version()"
 
-volumes:
-- name: dockersock
-  host:
-    path: /var/run/docker.sock
+services:
+- name: mongo
+  image: mongo:4
+  command: [ --smallfiles ]
