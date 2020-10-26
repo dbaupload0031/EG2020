@@ -2,14 +2,18 @@ kind: pipeline
 name: default
 
 steps:
-- name: test
-  image: postgres:9-alpine
+- name: build
+  image: golang:1.13
   commands:
-  - psql -U postgres -d test -h database
+  - make build_linux_amd64
 
-services:
-- name: database
-  image: postgres:9-alpine
-  environment:
-    POSTGRES_USER: postgres
-    POSTGRES_DB: test
+- name: docker
+  image: plugins/docker
+  settings:
+    registry: hub.docker.com
+    repo: hub.docker.com/dbaupload0031/demo
+    auto_tag: true
+    auto_tag_suffix: linux-amd64
+    username: dbaupload0031
+    password:
+      from_secret: dsf5572a
