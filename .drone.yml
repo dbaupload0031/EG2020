@@ -2,13 +2,15 @@ kind: pipeline
 name: default
 
 steps:
-- name: ping
-  image: mongo:4
+- name: test
+  image: mariadb
   commands:
-  - sleep 5
-  - mongo --host mongo --eval "db.version()"
+  - sleep 15
+  - mysql -u root -h database --execute="SELECT VERSION();"
 
 services:
-- name: mongo
-  image: mongo:4
-  command: [ --smallfiles ]
+- name: database
+  image: mariadb
+  environment:
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: test
