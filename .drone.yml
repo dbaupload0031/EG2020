@@ -1,18 +1,15 @@
 kind: pipeline
-type: docker
 name: default
 
 steps:
-- name: build
-  image: node
-  volumes:
-  - name: cache
-    path: /tmp/cache
+- name: test
+  image: postgres:9-alpine
   commands:
-  - npm install
-  - npm test
+  - psql -U postgres -d test -h database
 
-volumes:
-- name: cache
-  host:
-    path: /var/lib/cache
+services:
+- name: database
+  image: postgres:9-alpine
+  environment:
+    POSTGRES_USER: postgres
+    POSTGRES_DB: test
