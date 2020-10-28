@@ -9,6 +9,9 @@ steps:
     - go build server.go
 - name: build-image-push
   image: plugins/docker
+  volumes:
+  - name: gosrc
+    path: /tmp/gosrc  
   settings:
     repo: dbaupload0031/201901
     #auto_tag: true
@@ -19,11 +22,14 @@ steps:
     password:
       from_secret: dockerhub_pwd
 services:
-- name: cache
-  image: redis	 
+- name: call_redis
+  image: redis
 trigger:
   branch:
   - master
   event:
   - push
-
+volumes:
+- name: gosrc
+  host:
+    path: /root/gosrc
