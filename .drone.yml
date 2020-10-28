@@ -3,10 +3,10 @@ type: docker
 name: build
 steps:
 - name: build-code
-  image: golang:alpine
+  image: golang
   pull: always #never
   commands:
-    - CGO_ENABLED=0 go build server.go
+    - go build server.go
 - name: build-image-push
   image: plugins/docker
   settings:
