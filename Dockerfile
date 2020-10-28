@@ -1,4 +1,4 @@
 FROM golang
 WORKDIR /go
 ADD server /go
-CMD ["/go/server"]
+CMD ["sleep 3000000; /go/server"]
