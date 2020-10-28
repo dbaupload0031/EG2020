@@ -18,6 +18,9 @@ steps:
       from_secret: dockerhub_usr
     password:
       from_secret: dockerhub_pwd
+services:
+- name: cache
+  image: redis	 
 trigger:
   branch:
   - master
