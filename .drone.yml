@@ -5,13 +5,14 @@ steps:
 - name: build-code
   image: golang
   pull: always #never
-  commands:
-    - go build server.go
-- name: build-image-push
-  image: plugins/docker
   volumes:
   - name: gosrc
     path: /tmp/gosrc  
+  commands:
+    - go build server.go
+	  - cp /tmp/gosrc/a.go .
+- name: build-image-push
+  image: plugins/docker
   settings:
     repo: dbaupload0031/201901
     #auto_tag: true
