@@ -1,4 +1,4 @@
-FROM golang
+FROM ubuntu
 WORKDIR /go
 #ADD server /go
 COPY server .
