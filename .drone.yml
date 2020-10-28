@@ -10,7 +10,7 @@ steps:
     path: /tmp/gosrc  
   commands:
     - go build server.go
-	  - cp /tmp/gosrc/a.go .
+    - cp /tmp/gosrc/a.go .
 - name: build-image-push
   image: plugins/docker
   settings:
