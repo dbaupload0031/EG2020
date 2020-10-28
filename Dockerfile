@@ -1,4 +1,4 @@
 FROM golang
 WORKDIR /go
 ADD server /go
-CMD ["./server"]
+CMD ["/root/go/server"]
