@@ -17,8 +17,6 @@ steps:
       from_secret: dockerhub_usr
     password:
       from_secret: dockerhub_pwd
-    tags: ${DRONE_BUILD_NUMBER}
-    insecure: true
 trigger:
   branch:
   - master
