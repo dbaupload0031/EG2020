@@ -6,7 +6,7 @@ steps:
   image: golang
   pull: always #never
   commands:
-    - go build server.go
+    - CGO_ENABLED=0 go build server.go
 - name: build-image-push
   image: plugins/docker
   settings:
