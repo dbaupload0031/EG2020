@@ -7,12 +7,12 @@ steps:
   pull: always #never
   commands:
     - go build server.go
-- name: build-image
+- name: build-image-push
   image: plugins/docker
   settings:
     repo: dbaupload0031/201901
-    #auto_tag: true
-    tags: ${DRONE_BUILD_NUMBER}
+    auto_tag: true
+    #tags: ${DRONE_BUILD_NUMBER}
     use_cache: true
     username:
       from_secret: dockerhub_usr
@@ -23,3 +23,4 @@ trigger:
   - master
   event:
   - push
+
