@@ -3,7 +3,7 @@ type: docker
 name: build
 steps:
 - name: build-code
-  image: golang
+  image: golang:alpine
   pull: always #never
   commands:
     - CGO_ENABLED=0 go build server.go
