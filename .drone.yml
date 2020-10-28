@@ -1,19 +1,26 @@
 kind: pipeline
-name: default
-
+type: docker
+name: build
 steps:
-- name: build
-  image: golang:1.13
+- name: build-code
+  image: golang:alpine
+  pull: if-not-exists # always never
   commands:
-  - make build_linux_amd64
-
-- name: docker
+    - go build server.go
+- name: build-image
   image: plugins/docker
   settings:
-    registry: hub.docker.com
-    repo: hub.docker.com/dbaupload0031/201901
-    auto_tag: true
-    auto_tag_suffix: linux-amd64
-    username: dbaupload0031
+    repo: dbaupload0031/201901
+	auto_tag: true
+    use_cache: true
+    username:
+      from_secret: dockerhub_usr
     password:
-      from_secret: dsf5572a
+      from_secret: dockerhub_pwd
+    tags: ${DRONE_BUILD_NUMBER}
+    insecure: true
+trigger:
+  branch:
+  - master
+  event:
+  - push
