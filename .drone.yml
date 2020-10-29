@@ -39,12 +39,11 @@ volumes:
 kind: pipeline
 type: exec
 name: sam02
-
 platform:
   os: linux
   arch: amd64
-
 steps:
 - name: bring-container-up
   commands:
-  - docker run -d -p 80${DRONE_BUILD_NUMBER}:8080   dbaupload0031/201901:${DRONE_BUILD_NUMBER}
+  #- docker run -d -p 80${DRONE_BUILD_NUMBER}:8080   dbaupload0031/201901:${DRONE_BUILD_NUMBER}
+  - echo hello world
