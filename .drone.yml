@@ -35,13 +35,13 @@ volumes:
   host:
     path: /root/gosrc
 ---
-######
+
 kind: pipeline
 type: exec
 name: sam02
-platform:
-  os: linux
-  arch: amd64
+#platform:
+#  os: linux
+#  arch: amd64
 steps:
 - name: bring-container-up
   commands:
