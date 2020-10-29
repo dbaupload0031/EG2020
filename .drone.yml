@@ -1,15 +1,9 @@
----
 kind: pipeline
-type: ssh
+type: exec
 name: default
 
-server:
-  host: 172.16.111.26
-  user: this
-  password:
-    from_secret: this_172.16.111.26_pwd
-
 steps:
-- name: greeting
+- name: backend
   commands:
-  - echo hello world
+  - echo "123"
+  - echo "123"
