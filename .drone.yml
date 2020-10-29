@@ -3,7 +3,7 @@ type: exec
 name: default
 
 node:
-  runnner: rpi
+  runnner: rpi01
   
 steps:
 - name: backend
