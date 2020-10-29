@@ -34,7 +34,7 @@ volumes:
 - name: gosrc
   host:
     path: /root/gosrc
-
+---
 ######
 kind: pipeline
 type: exec
