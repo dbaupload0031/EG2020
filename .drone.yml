@@ -1,12 +1,15 @@
 ---
 kind: pipeline
 type: exec
-name: sam02
-platform:
-  os: linux
-  arch: amd64
+name: default
+
 steps:
-- name: bring-container-up
+- name: backend
   commands:
-  #- docker run -d -p 80${DRONE_BUILD_NUMBER}:8080   dbaupload0031/201901:${DRONE_BUILD_NUMBER}
-  - echo hello world
+  - echo "123"
+  - echo "123"
+
+- name: frontend
+  commands:
+  - echo "123"
+  - echo "123"
