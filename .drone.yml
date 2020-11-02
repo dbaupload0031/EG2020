@@ -27,7 +27,6 @@ steps:
   pull: always #never
   commands:
   - docker -H tcp://172.16.111.26:2375 run -d -p 80${DRONE_BUILD_NUMBER}:8080   dbaupload0031/201901:${DRONE_BUILD_NUMBER}	  
-	  
 services:
 - name: call_redis
   image: redis
