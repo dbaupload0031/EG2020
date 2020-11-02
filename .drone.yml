@@ -1,14 +1,15 @@
 kind: pipeline
 type: exec
-name: default
+name: build
 
-node:
-  runner: rpi
-  
+platform:
+  os: darwin
+  arch: amd64
+
 steps:
-- name: backend
-  commands:
-  - echo "123"
-  - echo "123"
-
-######
+  - name: build
+    commands:
+      - echo "built"
+    when:
+      event:
+        - tag
