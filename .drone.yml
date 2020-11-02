@@ -10,6 +10,4 @@ steps:
   - name: build
     commands:
       - echo "built"
-    when:
-      event:
-        - tag
+
